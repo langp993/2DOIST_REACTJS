@@ -7,6 +7,7 @@ function App() {
   const [todoText, setTodoText] = useState('');
   const [locationText, setLocationText] = useState('');
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
 
 
   const handleTodoTextChange = (event) => {
@@ -27,6 +28,24 @@ function App() {
       setTodoText('');
       setLocationText('');  
     }
+  };
+
+  const handleTodoClick = (index) => {
+    setCompletedTodos(prevCompletedTodos => {
+      const clickedTodo = todos[index];
+      const updatedTodos = todos.filter((_, i) => i !== index);
+      setTodos(updatedTodos);
+      return [...prevCompletedTodos, clickedTodo];
+    });
+  };
+    
+  const handleCompletedTodoClick = (index) => {
+    setTodos(prevTodos => {
+      const clickedTodo = completedTodos[index];
+      const updatedCompletedTodos = completedTodos.filter((_, i) => i !== index);
+      setCompletedTodos(updatedCompletedTodos);
+      return [...prevTodos, clickedTodo];
+    });
   };
 
 
@@ -56,17 +75,24 @@ function App() {
             Add Todo
           </button>
         </div>
-        <div className="flex flex-col md:flex-row flex-grow overflow-y-auto">
+        <div className="flex flex-col md:flex-row flex-grow">
           <div className="flex-grow bg-green-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[160px]">
             <h1 className="text-3xl font-bold underline">To Do's</h1>
             <ul className="overflow-y-auto max-h-[240px]">
               {todos.map((todo, index) => (
-                <li key={index} className="bg-gray-200 p-2 mt-4 mb-2">{todo.todo} - {todo.location}</li>
+                <li key={index} className="bg-gray-200 p-2 mt-4 mb-2" onClick={() => handleTodoClick(index)}>{todo.todo} - {todo.location}</li>
               ))}
             </ul>
           </div>
           <div className="flex-grow bg-yellow-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[20px] md:mt-[160px]">
             <h1 className="text-3xl font-bold underline">Completed Tasks</h1>
+            <ul className="overflow-y-auto max-h-[240px]">
+              {completedTodos.map((todo, index) => (
+                <li key={index} className="bg-gray-200 p-2 mt-4 mb-2" onClick={() => handleCompletedTodoClick(index)}>
+                  {todo.todo} - {todo.location}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
