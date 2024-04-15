@@ -35,10 +35,10 @@ function App() {
     // <div className="flex flex-col min-h-screen">
         <div className="flex flex-col h-[1800px]">
       <div className="flex-grow bg-blue-500 p-4 m-2">
-        <div className="bg-red-300 p-4 m-2">
+        <div className="bg-red-300 p-4 m-2 fixed w-[90%]">
           <h1 className="text-3xl font-bold underline">2DOIST</h1>
         </div>
-        <div className="flex bg-pink-300 p-1 m-2 mt-4">
+        <div className="flex bg-pink-300 p-1 m-2 mt-4 fixed top-[95px]">
         <input
             type="text"
             placeholder="Enter your todo"
@@ -58,10 +58,10 @@ function App() {
           </button>
         </div>
         <div className="flex flex-col md:flex-row flex-grow">
-          <div className="flex-grow bg-green-300 p-4 m-2 h-[300px] w-full md:w-[50%]">
+          <div className="flex-grow bg-green-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[160px]">
             <h1 className="text-3xl font-bold underline">To Do's</h1>
           </div>
-          <div className="flex-grow bg-yellow-300 p-4 m-2 h-[300px] w-full md:w-[50%]">
+          <div className="flex-grow bg-yellow-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[20px] md:mt-[160px]">
             <h1 className="text-3xl font-bold underline">Completed Tasks</h1>
           </div>
         </div>
