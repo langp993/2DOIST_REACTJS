@@ -26,7 +26,6 @@ function App() {
       setTodos([...todos, newTodo]);
       setTodoText('');
       setLocationText('');  
-      
     }
   };
 
@@ -57,9 +56,14 @@ function App() {
             Add Todo
           </button>
         </div>
-        <div className="flex flex-col md:flex-row flex-grow">
+        <div className="flex flex-col md:flex-row flex-grow overflow-y-auto">
           <div className="flex-grow bg-green-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[160px]">
             <h1 className="text-3xl font-bold underline">To Do's</h1>
+            <ul className="overflow-y-auto max-h-[240px]">
+              {todos.map((todo, index) => (
+                <li key={index} className="bg-gray-200 p-2 mt-4 mb-2">{todo.todo} - {todo.location}</li>
+              ))}
+            </ul>
           </div>
           <div className="flex-grow bg-yellow-300 p-4 m-2 h-[300px] w-full md:w-[50%] mt-[20px] md:mt-[160px]">
             <h1 className="text-3xl font-bold underline">Completed Tasks</h1>
@@ -70,7 +74,7 @@ function App() {
         This is the sticky footer
       </footer> */}
       <footer className="bg-gray-800 text-white p-4 text-center fixed bottom-0 w-full">
-        This is the sticky footer
+        ToDoist App ©      
       </footer>
     </div>
   );
